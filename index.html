@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falske Nyheter Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Klarer du å finne ut hvilken nyhet som er falsk?</h1>
+        <div id="question-area">
+            <!-- Question will be loaded here by JavaScript -->
+        </div>
+        <div class="options-container">
+            <div class="option" id="option1" onclick="checkAnswer(this)"></div>
+            <div class="option" id="option2" onclick="checkAnswer(this)"></div>
+            <div class="option" id="option3" onclick="checkAnswer(this)"></div>
+        </div>
+        <div id="feedback-area">
+            <!-- Feedback will be displayed here -->
+        </div>
+        <button id="next-question" style="display:none;" onclick="loadNextQuestion()">Neste Spørsmål</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

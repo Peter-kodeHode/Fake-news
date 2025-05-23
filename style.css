@@ -1,0 +1,91 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: wheat;
+    margin: 0;
+}
+
+.quiz-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    
+}
+
+#question-area {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.options-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    gap: 10px; /* Adds space between option boxes */
+}
+
+.option {
+    border: 1px solid #ccc;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    flex: 1; /* Makes options take equal width */
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    min-height: 100px; /* Ensure options have some height */
+}
+
+.option:hover {
+    background-color: lightblue;
+}
+
+.option.correct {
+    background-color: #aeffae;
+    border-color: #5cb85c;
+}
+
+.option.incorrect {
+    background-color: #ffbaba;
+    border-color: #d9534f;
+}
+
+.option.disabled {
+    cursor: not-allowed;
+}
+
+.option img {
+    margin-bottom: 5px; /* Space between image and text if any */
+}
+
+
+#feedback-area {
+    margin-top: 15px;
+    font-size: 1.1em;
+    min-height: 2em; /* Reserve space for feedback */
+}
+
+#next-question {
+    justify-self: center;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#next-question:hover {
+    background-color: #0056b3;
+}
