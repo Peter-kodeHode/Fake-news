@@ -47,6 +47,9 @@ const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
 const feedbackArea = document.getElementById('feedback-area');
 const nextButton = document.getElementById('next-question');
+const showTipsButton = document.getElementById('show-tips-btn'); // Nytt
+const tipsModal = document.getElementById('tips-modal'); // Nytt
+const closeBtn = document.querySelector('.close-btn'); // Nytt
 
 function loadQuestion(questionIndex) {
     const questionData = questions[questionIndex];
@@ -127,3 +130,19 @@ window.onload = () => {
         questionArea.textContent = "Ingen spørsmål lastet inn.";
     }
 };
+
+// Event Listeners for Modal (NYTT)
+showTipsButton.onclick = function() {
+    tipsModal.style.display = "block";
+}
+
+closeBtn.onclick = function() {
+    tipsModal.style.display = "none";
+}
+
+// Lukk modalen hvis brukeren klikker utenfor innholdet
+window.onclick = function(event) {
+    if (event.target == tipsModal) {
+        tipsModal.style.display = "none";
+    }
+}

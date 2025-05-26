@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <div class="quiz-container">
         <h1>Klarer du å finne ut hvilken nyhet som er falsk?</h1>
         <div id="question-area">
@@ -21,6 +22,46 @@
             <!-- Feedback will be displayed here -->
         </div>
         <button id="next-question" style="display:none;" onclick="loadNextQuestion()">Neste Spørsmål</button>
+        <button id="show-tips-btn">Vis Tips</button> <!-- Ny knapp -->
+    </div>
+
+    <!-- Popup Modal for Tips -->
+    <div id="tips-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Velkommen til Falske Nyheter-Quizen!</h2>
+            <p>I dagens digitale verden er det superviktig å kunne skille mellom hva som er sant og hva som er lureri på nett. Falske nyheter, manipulerte bilder og videoer (også kalt "deepfakes") og tekst skrevet av kunstig intelligens (AI) kan være vanskelig å oppdage. Men med noen smarte triks kan du bli en mesterdetektiv!</p>
+            <p>Denne quizen vil utfordre deg til å se nøye etter. Er du klar til å teste dine ferdigheter?</p>
+        
+            <h3>Tips for å avsløre falskt innhold:</h3>
+        
+            <h4>Generelle tips for falske nyheter:</h4>
+            <ul>
+                <li><strong>Sjekk kilden:</strong> Hvem har laget nettsiden eller skrevet artikkelen? Ser nettadressen (URL-en) rar ut? Er det en kjent og troverdig nyhetskilde, eller en helt ukjent side? Se etter en "Om oss"-side.</li>
+                <li><strong>Se etter andre kilder:</strong> Skriver andre, seriøse medier om det samme? Hvis ingen andre kjente nyhetskilder melder om saken, kan det være et faresignal.</li>
+                <li><strong>Språk og skrivefeil:</strong> Er det mange skrivefeil, rart språk eller overdrevent mange store bokstaver og utropstegn? Seriøse kilder er ofte nøye med språket.</li>
+                <li><strong>Vær obs på sterke følelser:</strong> Prøver saken å gjøre deg veldig sint, redd eller glad? Falske nyheter spiller ofte på følelsene våre for å bli delt raskt.</li>
+                <li><strong>Sjekk datoen:</strong> Er nyheten gammel, men blir presentert som ny? Noen ganger blir gamle saker delt på nytt for å skape forvirring.</li>
+                <li><strong>Hvem er avsenderen?</strong> Står det hvem som har skrevet saken? Kan du finne ut om denne personen er en ekte journalist eller ekspert?</li>
+            </ul>
+        
+            <h4>Tips for å gjenkjenne manipulerte bilder og videoer (Deepfakes):</h4>
+            <ul>
+                <li><strong>Se etter rariteter:</strong> Ser noe unaturlig ut i bildet eller videoen? Dette kan være rare kanter rundt personer, unaturlig hud, skygger som faller feil, eller at deler av bildet er uklart.</li>
+                <li><strong>Unaturlige bevegelser eller ansiktsuttrykk:</strong> Blinker personen rart eller for lite i en video? Stemmer munnbevegelsene dårlig med lyden (dårlig lip-sync)? Ser ansiktet litt "pålimt" ut?</li>
+                <li><strong>Bruk omvendt bildesøk:</strong> Du kan høyreklikke på et bilde og velge "Søk etter bildet med Google" (eller bruke tjenester som TinEye). Da kan du se om bildet er brukt før, og kanskje i en helt annen sammenheng.</li>
+            </ul>
+        
+            <h4>Tips for å gjenkjenne AI-generert tekst:</h4>
+            <ul>
+                <li><strong>Generisk og repeterende:</strong> Virker teksten veldig generell, uten personlighet, eller gjentar den de samme poengene på litt ulike måter?</li>
+                <li><strong>Mangler dybde:</strong> AI kan skrive mye, men mangler ofte ekte menneskelig innsikt eller spesifikke, nyanserte detaljer.</li>
+                <li><strong>Perfekt, men rart:</strong> Noen ganger kan teksten være grammatisk perfekt, men likevel føles litt "kunstig" eller mangle en naturlig flyt.</li>
+                <li><strong>Faktasjekk påstander:</strong> AI kan noen ganger "hallusinere" eller finne på fakta som ikke stemmer. Dobbeltsjekk viktige påstander.</li>
+            </ul>
+        
+            <p><strong>Husk:</strong> Vær nysgjerrig og kritisk! Ikke tro på alt du ser og leser med en gang. Still spørsmål, undersøk, og hvis du er usikker, snakk med en voksen du stoler på. Og viktigst av alt: <strong>Tenk deg om før du deler!</strong></p>
+        </div>
     </div>
 
     <script src="script.js"></script>
