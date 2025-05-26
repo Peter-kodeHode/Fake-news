@@ -16,6 +16,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 900px;
+    font-size:1.2em;
     
 }
 
@@ -43,10 +44,12 @@ body {
     align-items: center; /* Center content horizontally */
     justify-content: center; /* Center content vertically */
     min-height: 100px; /* Ensure options have some height */
+
 }
 
 .option:hover {
     background-color: lightblue;
+    font-weight: bold;
 }
 
 .option.correct {
