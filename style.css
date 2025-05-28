@@ -78,7 +78,8 @@ body {
 }
 
 #next-question {
-    justify-self: center;
+    /* justify-self: center; /* Removed as parent is not a grid/flex container for this button directly */
+    /* Buttons are inline-block by default and will be centered by parent's text-align: center */
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
@@ -87,30 +88,31 @@ body {
     border: none;
     border-radius: 5px;
     margin-top: 20px;
+    display: inline-block; /* Explicitly set for clarity, though default for button */
 }
 
 #next-question:hover {
     background-color: #0056b3;
 }
 
-/* ENDRET: Fra #show-tips-btn til .js-show-tips */
+/* Styling for .js-show-tips button */
 .js-show-tips {
-    padding: 10px 20px;
-    font-size: 1em;
+    padding: 12px 25px; /* To match .intro-start-button */
+    font-size: 1.1em;   /* To match .intro-start-button */
     cursor: pointer;
-    background-color: #6c757d; /* En litt annen farge for å skille den fra neste knapp */
+    background-color: red; 
     color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px; 
-    display: block; 
-    margin-left: auto;
-    margin-right: auto;
+    border: none;           /* To match .intro-start-button */
+    border-radius: 5px; /* To match .intro-start-button */
+    margin-top: 10px;  /* Provides spacing when it's below another button or on its own line */
+    display: inline-block; 
+    /* margin-left: auto; /* Not needed for centering inline-block; parent's text-align:center handles it */
+    /* margin-right: auto; /* Not needed for centering inline-block */
 }
 
-/* ENDRET: Fra #show-tips-btn:hover til .js-show-tips:hover */
+/* Hover effect for .js-show-tips button */
 .js-show-tips:hover {
-    background-color: #5a6268;
+    background-color: maroon;
 }
 
 /* Modal Styles */
