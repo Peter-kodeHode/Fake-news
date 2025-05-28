@@ -1,3 +1,5 @@
+
+
 body {
     font-family: sans-serif;
     display: flex;
@@ -19,6 +21,7 @@ body {
     font-size:1.2em;
     
 }
+
 
 #question-area {
     margin-bottom: 20px;
@@ -97,17 +100,19 @@ body {
 
 /* Styling for .js-show-tips button */
 .js-show-tips {
-    padding: 12px 25px; /* To match .intro-start-button */
-    font-size: 1.1em;   /* To match .intro-start-button */
+    padding: 12px 25px; /* Matches .intro-start-button */
+    font-size: 1.1em;   /* Matches .intro-start-button */
     cursor: pointer;
     background-color: red; 
     color: white;
-    border: none;           /* To match .intro-start-button */
-    border-radius: 5px; /* To match .intro-start-button */
-    margin-top: 10px;  /* Provides spacing when it's below another button or on its own line */
-    display: inline-block; 
-    /* margin-left: auto; /* Not needed for centering inline-block; parent's text-align:center handles it */
-    /* margin-right: auto; /* Not needed for centering inline-block */
+    border: none;           /* Matches .intro-start-button */
+    border-radius: 5px; /* Matches .intro-start-button */
+    margin-top: 5px;  /* Specific spacing for this button */
+    display: inline-flex;
+    align-items: center;    /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    line-height: normal; /* Or a specific line-height matching your design */
+    gap: 0.3em; /* Optional: adds a small space between text and emoji if they are separate children */
 }
 
 /* Hover effect for .js-show-tips button */
@@ -217,8 +222,12 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
-    margin-top: 20px;
-    display: inline-block;
+    margin-top: 20px; /* Specific spacing for this button */
+    display: inline-flex;
+    align-items: center;    /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    line-height: normal; /* Or a specific line-height matching your design */
+    gap: 0.3em; /* Optional: adds a small space between text and emoji if they are separate children */
 }
 
 .intro-start-button:hover {
