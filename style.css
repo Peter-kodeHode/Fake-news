@@ -93,7 +93,8 @@ body {
     background-color: #0056b3;
 }
 
-#show-tips-btn {
+/* ENDRET: Fra #show-tips-btn til .js-show-tips */
+.js-show-tips {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
@@ -101,19 +102,20 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
-    margin-top: 10px; /* Litt mindre margin hvis den er nær neste-knappen */
-    display: block; /* Gjør at den tar full bredde som de andre knappene hvis ønskelig */
+    margin-top: 10px; 
+    display: block; 
     margin-left: auto;
     margin-right: auto;
 }
 
-#show-tips-btn:hover {
+/* ENDRET: Fra #show-tips-btn:hover til .js-show-tips:hover */
+.js-show-tips:hover {
     background-color: #5a6268;
 }
 
 /* Modal Styles */
 .modal {
-    display: none; /* Skjult som standard */
+    display: none; /* Skjult som standard, men overstyres med inline style for intro */
     position: fixed; /* Blir på samme sted selv om du scroller */
     z-index: 1000; /* Sikrer at den ligger øverst */
     left: 0;
@@ -122,36 +124,71 @@ body {
     height: 100%;
     overflow: auto; /* Gjør det mulig å scrolle inni modalen hvis innholdet er langt */
     background-color: rgba(0,0,0,0.5); /* Halvgjennomsiktig svart bakgrunn */
-    padding-top: 60px; /* Plass fra toppen */
+    /* padding-top: 60px; Fjernet denne for å bruke flexbox for sentrering */
+    align-items: center; /* Vertikal sentrering for flexbox */
+    justify-content: center; /* Horisontal sentrering for flexbox */
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto; /* Sentrerer vertikalt og horisontalt */
+    /* margin: 5% auto; Fjernet denne da flexbox på .modal håndterer sentrering */
     padding: 25px;
     border: 1px solid #888;
     width: 80%; /* Bredde på modal-boksen */
     max-width: 700px; /* Maksimal bredde */
     border-radius: 10px;
     position: relative;
-    text-align: left;
-    font-size: 0.9em; /* Litt mindre tekst inni modalen for lesbarhet */
+    text-align: left; /* VIKTIG: Sørg for at dette er standard for desktop */
+    font-size: 0.9em; 
+    box-sizing: border-box; 
 }
 
 .modal-content h2, .modal-content h3, .modal-content h4 {
     color: #333;
     margin-top: 15px;
 }
+
 .modal-content ul {
     list-style-type: disc;
-    margin-left: 20px;
-    padding-left: 0;
-}
-.modal-content li {
-    margin-bottom: 8px;
-    line-height: 1.5;
+    /* Din eksisterende stil: */
+    margin-left: 20px; 
+    padding-left: 0;   
+    /* For mer standard kulepunktinnrykk, ville du vanligvis brukt:
+    /* margin-left: 0; */
+    /* padding-left: 40px; /* Eller lignende verdi */
+    /* Men vi beholder din eksisterende for desktop foreløpig */
 }
 
+
+/* Sentrer innhold i tips-modalen KUN på små skjermer */
+@media (max-width: 600px) {
+    #tips-modal .modal-content {
+        text-align: center; /* Dette vil sentrere teksten i h3, h4, p */
+    }
+
+    #tips-modal .modal-content ul {
+        display: inline-block; /* Gjør at selve ul-blokken kan sentreres */
+        text-align: left;   /* Holder teksten INNI listepunktene (li) venstrejustert */
+        
+        /* Nullstill den opprinnelige margin-left slik at inline-block sentrering fungerer rent */
+        margin-left: 0; 
+        
+        /* Legg til padding for kulepunktene, siden den opprinnelige var 0.
+           40px er en vanlig standard, juster etter behov. */
+        padding-left: 40px; 
+    }
+
+    /* Hvis du også vil at overskriftene og avsnittene skal ha litt luft
+       når de er sentrert på mobil, kan du legge til margin her: */
+    #tips-modal .modal-content h3,
+    #tips-modal .modal-content h4,
+    #tips-modal .modal-content p {
+        margin-left: auto; /* Hjelper med sentrering av blokk-elementer inni en text-align:center forelder */
+        margin-right: auto;
+        /* Du kan også justere bredden hvis de blir for brede når sentrert */
+        /* max-width: 90%; */
+    }
+}
 
 .close-btn {
     color: #aaa;
@@ -168,4 +205,20 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.intro-start-button { /* Stil for startknappen på introduksjonsskjermen */
+    padding: 12px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.intro-start-button:hover {
+    background-color: #0056b3;
 }

@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="quiz-container">
+    <div id="intro-screen" class="modal" style="display: flex;"> <!-- Vises som standard -->
+        <div class="modal-content" style="text-align: center;">
+            <h2>Velkommen til Fake-News-Quizen!</h2>
+            <p>I dagens digitale verden er det superviktig å kunne skille mellom hva som er sant og hva som er lureri på nett. Falske nyheter, manipulerte bilder og videoer (også kalt "deepfakes") og tekst skrevet av kunstig intelligens (KI, AI) kan være vanskelig å oppdage.</p>
+            <p>Denne quizen vil utfordre deg til å se nøye etter. Bruk gjerne tips-knappen for gode råd. </p>
+            <p>Er du klar til å teste dine ferdigheter?</p><p><strong>Lykke til!</strong></p>
+            <button id="start-quiz-btn" class="intro-start-button">Start Quiz</button>
+            <button class="js-show-tips">Vis Tips</button> <!-- NY: Tips-knapp lagt til her -->
+        </div>
+    </div>
+
+    <div class="quiz-container" style="display: none;"> <!-- Skjult som standard -->
         <h1>Klarer du å finne ut hvilken nyhet som er falsk?</h1>
         <div id="question-area">
             <!-- Question will be loaded here by JavaScript -->
@@ -22,16 +32,14 @@
             <!-- Feedback will be displayed here -->
         </div>
         <button id="next-question" style="display:none;" onclick="loadNextQuestion()">Neste Spørsmål</button>
-        <button id="show-tips-btn">Vis Tips</button> <!-- Ny knapp -->
+        <button class="js-show-tips">Vis Tips</button> <!-- ENDRET: Fra id="show-tips-btn" til class="js-show-tips" -->
     </div>
 
     <!-- Popup Modal for Tips -->
     <div id="tips-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Velkommen til Falske Nyheter-Quizen!</h2>
-            <p>I dagens digitale verden er det superviktig å kunne skille mellom hva som er sant og hva som er lureri på nett. Falske nyheter, manipulerte bilder og videoer (også kalt "deepfakes") og tekst skrevet av kunstig intelligens (AI) kan være vanskelig å oppdage. Men med noen smarte triks kan du bli en mesterdetektiv!</p>
-            <p>Denne quizen vil utfordre deg til å se nøye etter. Er du klar til å teste dine ferdigheter?</p>
+
         
             <h3>Tips for å avsløre falskt innhold:</h3>
         
@@ -62,7 +70,8 @@
         
             <p><strong>Husk:</strong> Vær nysgjerrig og kritisk! Ikke tro på alt du ser og leser med en gang. Still spørsmål, undersøk, og hvis du er usikker, snakk med en voksen du stoler på. Og viktigst av alt: <strong>Tenk deg om før du deler!</strong></p>
         </div>
-    </div>
+    </div>'
+    
 
     <script src="script.js"></script>
 </body>

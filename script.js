@@ -47,9 +47,15 @@ const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
 const feedbackArea = document.getElementById('feedback-area');
 const nextButton = document.getElementById('next-question');
-const showTipsButton = document.getElementById('show-tips-btn'); // Nytt
-const tipsModal = document.getElementById('tips-modal'); // Nytt
-const closeBtn = document.querySelector('.close-btn'); // Nytt
+// const showTipsButton = document.getElementById('show-tips-btn'); // Gammel linje
+const showTipsButtons = document.querySelectorAll('.js-show-tips'); // NY: Velger alle knapper med klassen .js-show-tips
+const tipsModal = document.getElementById('tips-modal');
+const closeBtn = document.querySelector('.close-btn');
+
+// Nye elementer for introduksjonsskjerm
+const introScreen = document.getElementById('intro-screen');
+const startQuizBtn = document.getElementById('start-quiz-btn');
+const quizContainer = document.querySelector('.quiz-container');
 
 function loadQuestion(questionIndex) {
     const questionData = questions[questionIndex];
@@ -122,19 +128,31 @@ function loadNextQuestion() {
     }
 }
 
-// Load the first question when the page loads
-window.onload = () => {
+// Event Listener for å starte quizen (NY)
+startQuizBtn.onclick = function() {
+    introScreen.style.display = "none";
+    quizContainer.style.display = "block"; 
     if (questions.length > 0) {
-        loadQuestion(currentQuestionIndex);
+        loadQuestion(currentQuestionIndex); 
     } else {
         questionArea.textContent = "Ingen spørsmål lastet inn.";
+        document.querySelector('.options-container').style.display = 'none';
+        nextButton.style.display = 'none';
     }
-};
-
-// Event Listeners for Modal (NYTT)
-showTipsButton.onclick = function() {
-    tipsModal.style.display = "block";
 }
+
+// Event Listeners for Modal (Tips)
+// Gammel implementering for én knapp:
+// showTipsButton.onclick = function() {
+//     tipsModal.style.display = "block";
+// }
+
+// NY implementering for flere knapper:
+showTipsButtons.forEach(button => {
+    button.onclick = function() {
+        tipsModal.style.display = "block";
+    }
+});
 
 closeBtn.onclick = function() {
     tipsModal.style.display = "none";
