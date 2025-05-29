@@ -7,7 +7,8 @@ const questions = [
             { text: "Ekte overskrift 2", isCorrect: false, isFake: false }
         ],
         feedbackCorrect: "Riktig! Denne overskriften var fabrikkert.",
-        feedbackIncorrect: "Ikke helt. Prøv å se etter oppsiktsvekkende språk eller påstander som ikke kan bekreftes."
+        feedbackIncorrect: "Ikke helt. Prøv å se etter oppsiktsvekkende språk eller påstander som ikke kan bekreftes.",
+        tipCategoryKey: 0 // Peker til "Generelle tips (Del 1)"
     },
     {
         questionText: "Identifiser det manipulerte bildet.",
@@ -17,26 +18,41 @@ const questions = [
             { text: "Bilde C (Falskt)", isCorrect: true, isFake: true, type: "image", src:"fake_image_C.jpg" }
         ],
         feedbackCorrect: "Godt observert! Det bildet har blitt endret.",
-        feedbackIncorrect: "Ikke helt. Det falske bildet har ofte små uoverensstemmelser eller forvrengninger."
-    },    {
-        questionText: "Identifiser det manipulerte bildet.",
-        options: [
-            { text: "Bilde A (Ekte)", isCorrect: false, isFake: false, type: "image", src:"real_image_A.jpg" },
-            { text: "Bilde B (Ekte)", isCorrect: false, isFake: false, type: "image", src:"real_image_B.jpg" },
-            { text: "Bilde C (Falskt)", isCorrect: true, isFake: true, type: "image", src:"fake_image_C.jpg" }
-        ],
-        feedbackCorrect: "Godt observert! Det bildet har blitt endret.",
-        feedbackIncorrect: "Ikke helt. Det falske bildet har ofte små uoverensstemmelser eller forvrengninger."
-    },    {
-        questionText: 'Hvilken av disse tror du er "fake" news?',
-        options: [
-            { text: "Ekte overskrift 1", isCorrect: false, isFake: false },
-            { text: "Falsk overskrift", isCorrect: true, isFake: true },
-            { text: "Ekte overskrift 2", isCorrect: false, isFake: false }
-        ],
-        feedbackCorrect: "Riktig! Denne overskriften var fabrikkert.",
-        feedbackIncorrect: "Ikke helt. Prøv å se etter oppsiktsvekkende språk eller påstander som ikke kan bekreftes."
+        feedbackIncorrect: "Ikke helt. Det falske bildet har ofte små uoverensstemmelser eller forvrengninger.",
+        tipCategoryKey: 2 // ENDRET: Peker nå til "Tips for bilder/video"
     },
+    {
+        questionText: "Identifiser det manipulerte bildet (Eksempel 2).",
+        options: [
+            { text: "Bilde X (Falskt)", isCorrect: true, isFake: true, type: "image", src:"fake_image_X.jpg" },
+            { text: "Bilde Y (Ekte)", isCorrect: false, isFake: false, type: "image", src:"real_image_Y.jpg" },
+            { text: "Bilde Z (Ekte)", isCorrect: false, isFake: false, type: "image", src:"real_image_Z.jpg" }
+        ],
+        feedbackCorrect: "Stemmer! Dette bildet var manipulert.",
+        feedbackIncorrect: "Se nøyere etter. Ofte er det detaljene som avslører en forfalskning.",
+        tipCategoryKey: 2 // ENDRET: Peker nå til "Tips for bilder/video"
+    },
+    {
+        questionText: 'Hvilken av disse overskriftene er mest sannsynlig falsk?',
+        options: [
+            { text: "Falsk overskrift om politikk", isCorrect: true, isFake: true },
+            { text: "Ekte overskrift om sport", isCorrect: false, isFake: false },
+            { text: "Ekte overskrift om kultur", isCorrect: false, isFake: false }
+        ],
+        feedbackCorrect: "Korrekt! Den var designet for å villede.",
+        feedbackIncorrect: "Feil. Den falske overskriften brukte ofte sterke, udokumenterte påstander.",
+        tipCategoryKey: 0 // Peker til "Generelle tips (Del 1)"
+    },
+    // Hvis du hadde et spørsmål for AI-tekst (tidligere tipCategoryKey: 2),
+    // må det nå ha tipCategoryKey: 3.
+    // Eksempel:
+    // {
+    //     questionText: "Hvilken tekst er mest sannsynlig skrevet av KI?",
+    //     options: [ /* ... */ ],
+    //     feedbackCorrect: "...",
+    //     feedbackIncorrect: "...",
+    //     tipCategoryKey: 3 // ENDRET: Peker nå til "Tips for AI-generert tekst"
+    // },
     // Add more questions here
 ];
 
@@ -51,6 +67,12 @@ const nextButton = document.getElementById('next-question');
 const showTipsButtons = document.querySelectorAll('.js-show-tips'); // NY: Velger alle knapper med klassen .js-show-tips
 const tipsModal = document.getElementById('tips-modal');
 const closeBtn = document.querySelector('.close-btn');
+
+// Karusell-elementer for tips
+const carouselSlides = document.querySelectorAll('#tips-modal .carousel-slide');
+const prevSlideButton = document.querySelector('#tips-modal .carousel-prev');
+const nextSlideButton = document.querySelector('#tips-modal .carousel-next');
+let currentTipSlideIndex = 0;
 
 // Nye elementer for introduksjonsskjerm
 const introScreen = document.getElementById('intro-screen');
@@ -141,16 +163,62 @@ startQuizBtn.onclick = function() {
     }
 }
 
-// Event Listeners for Modal (Tips)
-// Gammel implementering for én knapp:
-// showTipsButton.onclick = function() {
-//     tipsModal.style.display = "block";
-// }
+// Funksjon for å vise riktig karusell-slide
+function showTipSlide(index) {
+    if (carouselSlides.length === 0) return; // Ikke gjør noe hvis det ikke er slides
+
+    carouselSlides.forEach((slide, i) => {
+        slide.classList.toggle('active-slide', i === index);
+    });
+    currentTipSlideIndex = index;
+
+    if (prevSlideButton && nextSlideButton) { // Sjekk at knappene finnes
+        prevSlideButton.disabled = currentTipSlideIndex === 0;
+        nextSlideButton.disabled = currentTipSlideIndex === carouselSlides.length - 1;
+    }
+}
+
+if (prevSlideButton && nextSlideButton && carouselSlides.length > 0) {
+    prevSlideButton.addEventListener('click', () => {
+        if (currentTipSlideIndex > 0) {
+            showTipSlide(currentTipSlideIndex - 1);
+        }
+    });
+
+    nextSlideButton.addEventListener('click', () => {
+        if (currentTipSlideIndex < carouselSlides.length - 1) {
+            showTipSlide(currentTipSlideIndex + 1);
+        }
+    });
+}
 
 // NY implementering for flere knapper:
 showTipsButtons.forEach(button => {
     button.onclick = function() {
-        tipsModal.style.display = "block";
+        tipsModal.style.display = "flex"; // ENDRET FRA "block" TIL "flex"
+
+        if (carouselSlides.length > 0) {
+            const isIntroTipsButton = button.closest('#intro-screen') !== null;
+
+            if (isIntroTipsButton) {
+                // Hvis knappen er på introduksjonsskjermen, vis alltid første slide
+                showTipSlide(0);
+            } else {
+                // Hvis knappen er inne i quizen, vis relevant slide
+                const currentQuestionData = questions[currentQuestionIndex];
+                if (currentQuestionData && typeof currentQuestionData.tipCategoryKey !== 'undefined') {
+                    const relevantSlideIndex = currentQuestionData.tipCategoryKey;
+                    // Sørg for at indeksen er gyldig
+                    if (relevantSlideIndex >= 0 && relevantSlideIndex < carouselSlides.length) {
+                        showTipSlide(relevantSlideIndex);
+                    } else {
+                        showTipSlide(0); // Fallback til første slide hvis nøkkelen er ugyldig
+                    }
+                } else {
+                    showTipSlide(0); // Fallback hvis ingen tipskategori er definert for spørsmålet
+                }
+            }
+        }
     }
 });
 
