@@ -216,18 +216,20 @@ body {
     /* margin: 5% auto; Fjernet denne da flexbox på .modal håndterer sentrering */
     padding: 25px;
     border: 1px solid #888;
-    width: 80%; /* Bredde på modal-boksen */
-    max-width: 700px; /* Maksimal bredde */
-    border-radius: 10px;
+    width: 90%; /* Bredde på modal-boksen */
+    max-width: 900px; /* Maksimal bredde */
+    border-radius: 50px;
     position: relative;
     text-align: left; /* VIKTIG: Sørg for at dette er standard for desktop */
     font-size: 0.9em; 
-    box-sizing: border-box; 
+    box-sizing: border-box;  
+    font-size:1.2em;
 }
 
 .modal-content h2, .modal-content h3, .modal-content h4 {
     color: #333;
     margin-top: 15px;
+    font-size:1.5em;
 }
 
 .modal-content ul {
@@ -351,9 +353,9 @@ body {
         width: 100vw !important;
         max-width: 100vw !important;
         min-height: 100vh;
-        border-radius: 0;
+        border-radius: 50px;
         padding: 18px 8px 24px 8px;
-        font-size: 1.05em;
+        
         box-sizing: border-box;
         text-align: center;
         overflow-y: auto;
@@ -415,4 +417,9 @@ body {
         margin-left: 0;
         margin-right: 0;
     }
+    .quiz-container {
+
+    font-size:1.05em;
+    
+}
 }
