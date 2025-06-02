@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake News Quiz📰</title>
+    <title>Fake Quiz🤔</title>
     <link rel="stylesheet" href="style.css">
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
-    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -23,20 +13,19 @@
 <body>
     <div id="intro-screen" class="modal" style="display: flex;"> <!-- Vises som standard -->
         <div class="modal-content" style="text-align: center;">
-            <h2><i style="font-size:2em" class="ph-duotone ph-newspaper"></i></h2>
-            <h2>Velkommen til Fake-News-Quizen!</h2>
-            <p>I dagens digitale verden er det superviktig å kunne skille mellom hva som er sant og hva som er lureri på nett. Falske nyheter, manipulerte bilder og videoer (også kalt "deepfakes") og tekst skrevet av kunstig intelligens (KI, AI) kan være vanskelig å oppdage.</p>
+            <h1>🤔</h2>
+            <h2>Velkommen til fake-quizen!</h2>
+            <p>I en stadig mer digital og teknologisk verden er det superviktig å kunne skille mellom hva som er sant og hva som er lureri på nett. Falske nyheter, manipulerte bilder og videoer (også kalt "deepfakes") og tekst skrevet av kunstig intelligens (KI, AI) kan være vanskelig å oppdage.</p>
             <p>Denne quizen vil utfordre deg til å se nøye etter. Bruk gjerne tips-knappen for gode råd. </p>
-            <p>Er du klar til å teste dine ferdigheter?  
-                 <p><i class="ph-duotone ph-magnifying-glass" style="font-size:2em;"></i></p>
-            </p><p><strong>Lykke til!</strong></p>
-<button id="start-quiz-btn" class="intro-start-button">Start Quiz <i class="ph-duotone ph-exclamation-mark" style="font-size:1.2em"></i></button>
-<button class="js-show-tips">Tips <i class="ph-duotone ph-lightbulb"></i></button>
+            <p>Er du klar til å utfordre lureri-sansene dine? <i class="ph-duotone ph-magnifying-glass" style="font-size:2em;"></i></p>
+            <p><strong>Lykke til!</strong></p>
+<button id="start-quiz-btn" class="intro-start-button btn-shared-style">Start Quiz <i class="ph-duotone ph-exclamation-mark"></i></button>
+<button class="js-show-tips btn-shared-style">Tips <i class="ph-duotone ph-lightbulb"></i></button>
         </div>
     </div>
 
     <div class="quiz-container" style="display: none;"> <!-- Skjult som standard -->
-        <h1>Klarer du å finne ut hvilken nyhet som er falsk?</h1>
+        <h1>Klarer du å se hva som er lureri?🧐</h1>
         <div id="question-area">
             <!-- Question will be loaded here by JavaScript -->
         </div>
@@ -49,7 +38,8 @@
             <!-- Feedback will be displayed here -->
         </div>
         <button id="next-question" style="display:none;" onclick="loadNextQuestion()">Neste Spørsmål</button>
-        <button class="js-show-tips">Vis Tips</button> <!-- ENDRET: Fra id="show-tips-btn" til class="js-show-tips" -->
+        <button class="js-show-tips btn-shared-style">Vis Tips</button> <!-- Ensure btn-shared-style is here too -->
+        <button id="play-again-btn" style="display:none;">Spill Igjen <i class="ph-duotone ph-arrow-counter-clockwise"></i></button>
     </div>
 
     <!-- Popup Modal for Tips -->
@@ -57,7 +47,6 @@
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h3>Tips for å avsløre falskt innhold:</h3>
-
             <div class="carousel-container">
                 <div class="carousel-slides">
                     <div class="carousel-slide">
@@ -104,6 +93,12 @@
             </div>
         </div>
     </div>
+
+    <audio id="correct-sound" src="sounds/correct.wav" preload="auto"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.wav" preload="auto"></audio>
+    <audio id="start-quiz-sound" src="sounds/startquiz.wav" preload="auto"></audio>
+    <audio id="celebrate-sound" src="sounds/celebrate.wav" preload="auto"></audio>
+    <audio id="pop-sound" src="sounds/pop.wav" preload="auto"></audio>
 
     <script src="script.js"></script>
 </body>

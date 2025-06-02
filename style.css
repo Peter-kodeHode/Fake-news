@@ -49,8 +49,8 @@ body {
 }
 
 .option:hover {
-    background-color: lightblue;
-    font-weight: bold;
+    background-color: lightgrey;
+    
 }
 
 .option.correct {
@@ -96,26 +96,103 @@ body {
     background-color: #0056b3;
 }
 
-/* Styling for .js-show-tips button */
-.js-show-tips {
-    padding: 12px 25px; /* Matches .intro-start-button */
-    font-size: 1.1em;   /* Matches .intro-start-button */
+#play-again-btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
     cursor: pointer;
-    background-color: red; 
+    background-color: #28a745; /* Green color for play again */
     color: white;
-    border: none;           /* Matches .intro-start-button */
-    border-radius: 5px; /* Matches .intro-start-button */
-    margin-top: 5px;  /* Specific spacing for this button */
-    display: inline-flex;
-    align-items: center;    /* Vertical centering */
-    justify-content: center; /* Horizontal centering */
-    line-height: normal; /* Or a specific line-height matching your design */
-    gap: 0.3em; /* Optional: adds a small space between text and emoji if they are separate children */
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-flex; /* Use flex to align icon and text */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em; /* Space between text and icon */
 }
 
-/* Hover effect for .js-show-tips button */
+#play-again-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.quiz-finished-feedback {
+    font-weight: bold;
+    animation: celebrate 1.5s ease-out;
+}
+
+@keyframes celebrate {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+        color: #28a745; /* Green color */
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        color: #28a745; /* Keep green color */
+    }
+}
+
+
+/* Common base style for Start and Tips buttons */
+.btn-shared-style {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: normal;
+    gap: 0.5em;
+    text-decoration: none;
+    box-sizing: border-box; /* Important for consistent width calculation with padding */
+}
+
+/* Consistent icon styling within these buttons */
+.btn-shared-style i {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Styling for .js-show-tips button (Tips button) */
+.js-show-tips {
+    /* Inherits common styles from .btn-shared-style */
+    background-color: red;
+    margin-top: 10px;
+}
+
 .js-show-tips:hover {
     background-color: maroon;
+}
+
+/* Styling for .intro-start-button (Start Quiz button on intro screen) */
+.intro-start-button {
+    /* Inherits common styles from .btn-shared-style */
+    background-color: #007bff;
+    margin-top: 20px;
+}
+
+.intro-start-button:hover {
+    background-color: #0056b3;
+}
+
+/* Ensure buttons on the intro screen have a consistent minimum width and are centered */
+#intro-screen .modal-content { /* Parent container of the buttons */
+    text-align: center; /* This centers inline-flex buttons */
+}
+
+#intro-screen .btn-shared-style {
+    min-width: 180px; /* Adjust this value if needed to make buttons the same width */
+    /* margin-left: auto; and margin-right: auto; are not strictly needed here
+       as text-align: center on the parent handles centering for inline-flex.
+       If they were block, these would be used. */
 }
 
 /* Modal Styles */
@@ -261,24 +338,4 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-
-.intro-start-button { /* Stil for startknappen på introduksjonsskjermen */
-    padding: 12px 25px;
-    font-size: 1.1em;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px; /* Specific spacing for this button */
-    display: inline-flex;
-    align-items: center;    /* Vertical centering */
-    justify-content: center; /* Horizontal centering */
-    line-height: normal; /* Or a specific line-height matching your design */
-    gap: 0.3em; /* Optional: adds a small space between text and emoji if they are separate children */
-}
-
-.intro-start-button:hover {
-    background-color: #0056b3;
 }
